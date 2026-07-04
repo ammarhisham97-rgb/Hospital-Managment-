@@ -1,0 +1,237 @@
+﻿using System.Text;
+using FluentValidation;
+using Hospital_Managment_system.Data;
+using Hospital_Managment_system.Interfaces;
+using Hospital_Managment_system.Mapping;
+using Hospital_Managment_system.Middleware;
+using Hospital_Managment_system.Models;
+using Hospital_Managment_system.Repositories;
+using Hospital_Managment_system.Services;
+using Hospital_Managment_system.Validators;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Serilog;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// === CONFIGURATION ===
+var configuration = builder.Configuration;
+var services = builder.Services;
+
+// === SERILOG CONFIGURATION ===
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("logs/hospital-system-.txt", 
+        rollingInterval: RollingInterval.Day,
+        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+    .Enrich.FromLogContext()
+    .Enrich.WithProperty("Application", "HospitalManagementSystem")
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
+// === DATABASE CONFIGURATION ===
+var connectionString = configuration.GetConnectionString("DefaultConnection") 
+    ?? "Server=(local);Database=HospitalManagementDb;Trusted_Connection=true;TrustServerCertificate=true;";
+
+services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
+// === IDENTITY CONFIGURATION ===
+services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 8;
+    options.Password.RequireDigit = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.User.RequireUniqueEmail = true;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+
+// === JWT CONFIGURATION ===
+var jwtSettings = configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"] ?? "your-super-secret-key-that-is-at-least-32-characters-long-for-security";
+var issuer = jwtSettings["Issuer"] ?? "HospitalManagementSystem";
+var audience = jwtSettings["Audience"] ?? "HospitalManagementUsers";
+var key = Encoding.ASCII.GetBytes(secretKey);
+
+services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidIssuer = issuer,
+        ValidateAudience = true,
+        ValidAudience = audience,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+// === AUTHORIZATION ===
+services.AddAuthorization();
+
+// === DEPENDENCY INJECTION ===
+services.AddScoped<IUnitOfWork, UnitOfWork>();
+services.AddScoped<IAuthService, AuthService>();
+services.AddScoped<IPatientService, PatientService>();
+services.AddScoped<IDoctorService, DoctorService>();
+services.AddScoped<IAppointmentService, AppointmentService>();
+services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+services.AddScoped<IDepartmentService, DepartmentService>();
+services.AddScoped<IDashboardService, DashboardService>();
+
+// === AUTOMAPPER ===
+services.AddAutoMapper(typeof(DepartmentMappingProfile));
+
+// === FLUENT VALIDATION ===
+services.AddValidatorsFromAssemblyContaining<RegisterValidator>();
+
+// === CONTROLLERS & API ===
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+
+// === SWAGGER CONFIGURATION ===
+services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Version = "v1",
+        Title = "Hospital Management System API",
+        Description = "A comprehensive REST API for Hospital Management System"
+    });
+
+    options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        Description = "JWT Authorization header using the Bearer scheme"
+    });
+
+    options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+});
+
+// === CORS CONFIGURATION ===
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+var app = builder.Build();
+
+// === MIDDLEWARE PIPELINE ===
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Hospital Management System API v1");
+        options.RoutePrefix = "swagger";
+    });
+}
+
+app.UseHttpsRedirection();
+app.UseCors("AllowAll");
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseSerilogRequestLogging();
+
+app.MapControllers();
+
+// === SEED DATA ===
+using (var scope = app.Services.CreateScope())
+{
+    var sp = scope.ServiceProvider;
+    var dbContext = sp.GetRequiredService<AppDbContext>();
+    var userManager = sp.GetRequiredService<UserManager<User>>();
+    var roleManager = sp.GetRequiredService<RoleManager<IdentityRole>>();
+
+    try
+    {
+        dbContext.Database.Migrate();
+
+        var roles = new[] { "Admin", "Doctor", "Patient", "Receptionist" };
+        foreach (var role in roles)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+
+        var adminUser = await userManager.FindByEmailAsync("admin@hospital.com");
+        if (adminUser == null)
+        {
+            adminUser = new User
+            {
+                UserName = "admin",
+                Email = "admin@hospital.com",
+                FullName = "Hospital Administrator",
+                PhoneNumber = "+1234567890",
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+
+            var result = await userManager.CreateAsync(adminUser, "Admin@123456");
+            if (result.Succeeded)
+            {
+                await userManager.AddToRoleAsync(adminjsonUser, "Admin");
+            }
+        }
+
+        if (!dbContext.Departments.Any())
+        {
+            var departments = new[]
+            {
+                new Department { Name = "Cardiology", Description = "Heart and cardiovascular diseases", ContactNumber = "+1234567890", Email = "cardiology@hospital.com" },
+                new Department { Name = "Neurology", Description = "Nervous system disorders", ContactNumber = "+1234567891", Email = "neurology@hospital.com" },
+                new Department { Name = "Orthopedics", Description = "Bones and joints", ContactNumber = "+1234567892", Email = "orthopedics@hospital.com" }
+            };
+
+            dbContext.Departments.AddRange(departments);
+            await dbContext.SaveChangesAsync();
+        }
+
+        Log.Information("Database seeding completed");
+    }
+    catch (Exception ex)
+    {
+        Log.Error(ex, "Error during database seeding");
+    }
+}
+
+app.Run();

@@ -1,0 +1,54 @@
+namespace Hospital_Managment_system.Models;
+
+/// <summary>
+/// Represents a doctor in the hospital.
+/// </summary>
+public class Doctor : BaseEntity
+{
+    /// <summary>
+    /// User ID associated with this doctor.
+    /// </summary>
+    public required string UserId { get; set; }
+
+    /// <summary>
+    /// Medical license number.
+    /// </summary>
+    public required string LicenseNumber { get; set; }
+
+    /// <summary>
+    /// Specialization of the doctor (e.g., Cardiology, Neurology).
+    /// </summary>
+    public required string Specialization { get; set; }
+
+    /// <summary>
+    /// Years of experience.
+    /// </summary>
+    public int YearsOfExperience { get; set; }
+
+    /// <summary>
+    /// Department ID where the doctor works.
+    /// </summary>
+    public int? DepartmentId { get; set; }
+
+    /// <summary>
+    /// Qualifications/certifications.
+    /// </summary>
+    public string? Qualifications { get; set; }
+
+    /// <summary>
+    /// Consultation fee.
+    /// </summary>
+    public decimal ConsultationFee { get; set; }
+
+    /// <summary>
+    /// Flag indicating if the doctor is available.
+    /// </summary>
+    public bool IsAvailable { get; set; } = true;
+
+    // Navigation properties
+    public User? User { get; set; }
+    public Department? Department { get; set; }
+    public ICollection<Appointment> Appointments { get; set; } = [];
+    public ICollection<DoctorSchedule> Schedules { get; set; } = [];
+    public ICollection<MedicalRecord> MedicalRecords { get; set; } = [];
+}

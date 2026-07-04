@@ -1,0 +1,133 @@
+﻿using AutoMapper;
+using Hospital_Managment_system.DTOs;
+using Hospital_Managment_system.Models;
+
+namespace Hospital_Managment_system.Mapping;
+
+/// <summary>
+/// AutoMapper profile for Department mappings.
+/// </summary>
+public class DepartmentMappingProfile : Profile
+{
+    public DepartmentMappingProfile()
+    {
+        CreateMap<DepartmentDto, Department>(MemberList.Source)
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id ?? 0));
+
+        CreateMap<Department, DepartmentDto>();
+
+        CreateMap<Department, DepartmentDetailDto>()
+            .ForMember(dest => dest.DoctorCount, opt => opt.MapFrom(src => src.Doctors.Count));
+    }
+}
+
+/// <summary>
+/// AutoMapper profile for Doctor mappings.
+/// </summary>
+public class DoctorMappingProfile : Profile
+{
+    public DoctorMappingProfile()
+    {
+        CreateMap<DoctorDto, Doctor>(MemberList.Source)
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id ?? 0));
+
+        CreateMap<Doctor, DoctorDto>();
+
+        CreateMap<Doctor, DoctorDetailDto>()
+            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User!.FullName))
+            .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User!.Email))
+            .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User!.PhoneNumber))
+            .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department!.Name))
+            .ForMember(dest => dest.ProfileImageUrl, opt => opt.MapFrom(src => src.User!.ProfileImageUrl))
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.User!.Address));
+
+        CreateMap<DoctorSchedule, DoctorScheduleDto>(MemberList.Source)
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id == 0 ? null : src.Id));
+
+        CreateMap<DoctorScheduleDto, DoctorSchedule>(MemberList.Source)
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id ?? 0));
+    }
+}
+
+/// <summary>
+/// AutoMapper profile for Patient mappings.
+/// </summary>
+public class PatientMappingProfile : Profile
+{
+    public PatientMappingProfile()
+    {
+        CreateMap<PatientDto, Patient>(MemberList.Source)
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id ?? 0));
+
+        CreateMap<Patient, PatientDto>();
+
+        CreateMap<Patient, PatientDetailDto>()
+            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User!.FullName))
+            .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User!.Email))
+            .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User!.PhoneNumber))
+            .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => src.User!.DateOfBirth))
+            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.User!.Address))
+            .ForMember(dest => dest.ProfileImageUrl, opt => opt.MapFrom(src => src.User!.ProfileImageUrl));
+
+        CreateMap<Patient, PatientSearchDto>()
+            .ForMember(dest => dest.FullName, opt => opt.MapFrom(src => src.User!.FullName))
+            .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.User!.Email))
+            .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.User!.PhoneNumber));
+    }
+}
+
+/// <summary>
+/// AutoMapper profile for Appointment mappings.
+/// </summary>
+public class AppointmentMappingProfile : Profile
+{
+    public AppointmentMappingProfile()
+    {
+        CreateMap<AppointmentDto, Appointment>(MemberList.Source)
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id ?? 0));
+
+        CreateMap<Appointment, AppointmentDto>();
+
+        CreateMap<Appointment, AppointmentDetailDto>()
+            .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient!.User!.FullName))
+            .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor!.User!.FullName));
+
+        CreateMap<RescheduleAppointmentDto, Appointment>(MemberList.Source)
+            .ForMember(dest => dest.AppointmentDateTime, opt => opt.MapFrom(src => src.NewAppointmentDateTime));
+    }
+}
+
+/// <summary>
+/// AutoMapper profile for MedicalRecord mappings.
+/// </summary>
+public class MedicalRecordMappingProfile : Profile
+{
+    public MedicalRecordMappingProfile()
+    {
+        CreateMap<MedicalRecordDto, MedicalRecord>(MemberList.Source)
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id ?? 0));
+
+        CreateMap<MedicalRecord, MedicalRecordDto>();
+
+        CreateMap<MedicalRecord, MedicalRecordDetailDto>()
+            .ForMember(dest => dest.PatientName, opt => opt.MapFrom(src => src.Patient!.User!.FullName))
+            .ForMember(dest => dest.DoctorName, opt => opt.MapFrom(src => src.Doctor!.User!.FullName))
+            .ForMember(dest => dest.Prescriptions, opt => opt.MapFrom(src => src.Prescriptions));
+    }
+}
+
+/// <summary>
+/// AutoMapper profile for Prescription mappings.
+/// </summary>
+public class PrescriptionMappingProfile : Profile
+{
+    public PrescriptionMappingProfile()
+    {
+        CreateMap<PrescriptionDto, Prescription>(MemberList.Source)
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id ?? 0));
+
+        CreateMap<Prescription, PrescriptionDto>();
+
+        CreateMap<Prescription, PrescriptionDetailDto>();
+    }
+}

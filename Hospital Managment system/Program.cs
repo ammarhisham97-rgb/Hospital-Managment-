@@ -1,0 +1,447 @@
+using System.Text;
+using FluentValidation;
+using Hospital_Managment_system.Data;
+using Hospital_Managment_system.Interfaces;
+using Hospital_Managment_system.Mapping;
+using Hospital_Managment_system.Middleware;
+using Hospital_Managment_system.Models;
+using Hospital_Managment_system.Repositories;
+using Hospital_Managment_system.Services;
+using Hospital_Managment_system.Validators;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Serilog;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// === CONFIGURATION ===
+var configuration = builder.Configuration;
+var services = builder.Services;
+
+// === SERILOG CONFIGURATION ===
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+    .WriteTo.File("logs/hospital-system-.txt", 
+        rollingInterval: RollingInterval.Day,
+        outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
+    .Enrich.FromLogContext()
+    .Enrich.WithProperty("Application", "HospitalManagementSystem")
+    .CreateLogger();
+
+builder.Host.UseSerilog();
+
+// === DATABASE CONFIGURATION ===
+var connectionString = configuration.GetConnectionString("DefaultConnection") 
+    ?? "Server=(localdb)\\mssqllocaldb;Database=HospitalManagementDb;Trusted_Connection=true;TrustServerCertificate=true;";
+
+services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(connectionString));
+
+// === IDENTITY CONFIGURATION ===
+services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.Password.RequiredLength = 8;
+    options.Password.RequireDigit = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.User.RequireUniqueEmail = true;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+
+// === JWT CONFIGURATION ===
+var jwtSettings = configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"] ?? "your-super-secret-key-that-is-at-least-32-characters-long-for-security";
+var issuer = jwtSettings["Issuer"] ?? "HospitalManagementSystem";
+var audience = jwtSettings["Audience"] ?? "HospitalManagementUsers";
+var key = Encoding.ASCII.GetBytes(secretKey);
+
+services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidIssuer = issuer,
+        ValidateAudience = true,
+        ValidAudience = audience,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero
+    };
+});
+
+// === AUTHORIZATION ===
+services.AddAuthorization();
+
+// === DEPENDENCY INJECTION ===
+services.AddScoped<IUnitOfWork, UnitOfWork>();
+services.AddScoped<IAuthService, AuthService>();
+services.AddScoped<IPatientService, PatientService>();
+services.AddScoped<IDoctorService, DoctorService>();
+services.AddScoped<IAppointmentService, AppointmentService>();
+services.AddScoped<IMedicalRecordService, MedicalRecordService>();
+services.AddScoped<IDepartmentService, DepartmentService>();
+services.AddScoped<IDashboardService, DashboardService>();
+
+// === AUTOMAPPER ===
+services.AddAutoMapper(typeof(DepartmentMappingProfile));
+
+// === FLUENT VALIDATION ===
+services.AddValidatorsFromAssemblyContaining<RegisterValidator>();
+
+// === CONTROLLERS & API ===
+services.AddControllers();
+services.AddEndpointsApiExplorer();
+services.AddOpenApi();
+
+// === CORS CONFIGURATION ===
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+var app = builder.Build();
+
+// === MIDDLEWARE PIPELINE ===
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapOpenApi();
+}
+
+app.UseHttpsRedirection();
+app.UseCors("AllowAll");
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseSerilogRequestLogging();
+
+app.MapControllers();
+
+// === SEED DATA ===
+using (var scope = app.Services.CreateScope())
+{
+    var sp = scope.ServiceProvider;
+    var dbContext = sp.GetRequiredService<AppDbContext>();
+    var userManager = sp.GetRequiredService<UserManager<User>>();
+    var roleManager = sp.GetRequiredService<RoleManager<IdentityRole>>();
+
+    try
+    {
+        dbContext.Database.Migrate();
+
+        var roles = new[] { "Admin", "Doctor", "Patient", "Receptionist" };
+        foreach (var role in roles)
+        {
+            if (!await roleManager.RoleExistsAsync(role))
+            {
+                await roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
+
+        // ========== CREATE ADMIN USER ==========
+        var adminUser = await userManager.FindByEmailAsync("admin@hospital.com");
+        if (adminUser == null)
+        {
+            adminUser = new User
+            {
+                UserName = "admin",
+                Email = "admin@hospital.com",
+                FullName = "Hospital Administrator",
+                PhoneNumber = "+1-555-0100",
+                Address = "100 Hospital Lane",
+                City = "New York",
+                State = "NY",
+                PostalCode = "10001",
+                Country = "USA",
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
+            };
+
+            var result = await userManager.CreateAsync(adminUser, "Admin@123456");
+            if (result.Succeeded)
+            {
+                await userManager.AddToRoleAsync(adminUser, "Admin");
+            }
+        }
+
+        // ========== CREATE DEPARTMENTS ==========
+        if (!dbContext.Departments.Any())
+        {
+            var departments = new[]
+            {
+                new Department { Name = "Cardiology", Description = "Heart and cardiovascular diseases", ContactNumber = "+1-555-0101", Email = "cardiology@hospital.com" },
+                new Department { Name = "Neurology", Description = "Nervous system disorders", ContactNumber = "+1-555-0102", Email = "neurology@hospital.com" },
+                new Department { Name = "Orthopedics", Description = "Bones and joints", ContactNumber = "+1-555-0103", Email = "orthopedics@hospital.com" },
+                new Department { Name = "Pediatrics", Description = "Children's medical care", ContactNumber = "+1-555-0104", Email = "pediatrics@hospital.com" },
+                new Department { Name = "General Surgery", Description = "Surgical procedures", ContactNumber = "+1-555-0105", Email = "surgery@hospital.com" }
+            };
+
+            dbContext.Departments.AddRange(departments);
+            await dbContext.SaveChangesAsync();
+        }
+
+        // ========== CREATE DOCTOR USERS AND DOCTORS ==========
+        var doctors = new List<Doctor>();
+        var doctorCredentials = new[]
+        {
+            ("dr.smith", "Dr. Sarah Smith", "dr.smith@hospital.com", "+1-555-0201", "Cardiology", "MD001", 15, "$150", "Board Certified in Cardiology"),
+            ("dr.jones", "Dr. Michael Jones", "dr.jones@hospital.com", "+1-555-0202", "Neurology", "MD002", 12, "$140", "Board Certified in Neurology"),
+            ("dr.williams", "Dr. Emily Williams", "dr.williams@hospital.com", "+1-555-0203", "Orthopedics", "MD003", 10, "$130", "Board Certified in Orthopedic Surgery"),
+            ("dr.brown", "Dr. Robert Brown", "dr.brown@hospital.com", "+1-555-0204", "Pediatrics", "MD004", 8, "$120", "MD, Pediatric Specialist"),
+            ("dr.davis", "Dr. Jennifer Davis", "dr.davis@hospital.com", "+1-555-0205", "General Surgery", "MD005", 20, "$160", "MD, Chief of Surgery")
+        };
+
+        foreach (var (username, fullName, email, phone, dept, license, experience, fee, qualifications) in doctorCredentials)
+        {
+            var doctorUser = await userManager.FindByEmailAsync(email);
+            if (doctorUser == null)
+            {
+                doctorUser = new User
+                {
+                    UserName = username,
+                    Email = email,
+                    FullName = fullName,
+                    PhoneNumber = phone,
+                    Address = "200 Medical Drive, Suite " + (int.Parse(license.Substring(2)) * 10),
+                    City = "New York",
+                    State = "NY",
+                    PostalCode = "10001",
+                    Country = "USA",
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                };
+
+                var result = await userManager.CreateAsync(doctorUser, "Doctor@123456");
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(doctorUser, "Doctor");
+
+                    var department = await dbContext.Departments.FirstOrDefaultAsync(d => d.Name == dept);
+                    var doctor = new Doctor
+                    {
+                        UserId = doctorUser.Id,
+                        LicenseNumber = license,
+                        Specialization = dept,
+                        YearsOfExperience = experience,
+                        DepartmentId = department?.Id,
+                        Qualifications = qualifications,
+                        ConsultationFee = decimal.Parse(fee.Substring(1)),
+                        IsAvailable = true,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    };
+
+                    dbContext.Doctors.Add(doctor);
+                    doctors.Add(doctor);
+                }
+            }
+            else
+            {
+                var existingDoctor = await dbContext.Doctors.FirstOrDefaultAsync(d => d.UserId == doctorUser.Id);
+                if (existingDoctor != null)
+                    doctors.Add(existingDoctor);
+            }
+        }
+
+        await dbContext.SaveChangesAsync();
+
+        // ========== CREATE PATIENT USERS AND PATIENTS ==========
+        var patients = new List<Patient>();
+        var patientCredentials = new[]
+        {
+            ("patient1", "John Murphy", "john.murphy@email.com", "+1-555-0301", "O+", "Penicillin, Latex", "Hypertension", "Mary Murphy", "+1-555-0401"),
+            ("patient2", "Alice Johnson", "alice.johnson@email.com", "+1-555-0302", "B+", "Sulfa drugs", "Type 2 Diabetes", "Robert Johnson", "+1-555-0402"),
+            ("patient3", "David Lee", "david.lee@email.com", "+1-555-0303", "A-", "None", "Asthma", "Lisa Lee", "+1-555-0403"),
+            ("patient4", "Maria Garcia", "maria.garcia@email.com", "+1-555-0304", "AB+", "Aspirin", "None", "Carlos Garcia", "+1-555-0404"),
+            ("patient5", "James Wilson", "james.wilson@email.com", "+1-555-0305", "O-", "Shellfish allergy", "Chronic back pain", "Patricia Wilson", "+1-555-0405")
+        };
+
+        foreach (var (username, fullName, email, phone, bloodGroup, allergies, medHistory, emergencyName, emergencyPhone) in patientCredentials)
+        {
+            var patientUser = await userManager.FindByEmailAsync(email);
+            if (patientUser == null)
+            {
+                patientUser = new User
+                {
+                    UserName = username,
+                    Email = email,
+                    FullName = fullName,
+                    PhoneNumber = phone,
+                    DateOfBirth = new DateTime(1980 + int.Parse(username.Substring(7)), 5, 15),
+                    Address = $"500 Patient Avenue, Apt {int.Parse(username.Substring(7)) * 10}",
+                    City = "New York",
+                    State = "NY",
+                    PostalCode = "10002",
+                    Country = "USA",
+                    CreatedAt = DateTime.UtcNow,
+                    UpdatedAt = DateTime.UtcNow
+                };
+
+                var result = await userManager.CreateAsync(patientUser, "Patient@123456");
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(patientUser, "Patient");
+
+                    var patient = new Patient
+                    {
+                        UserId = patientUser.Id,
+                        PatientNumber = $"PAT{DateTime.UtcNow.Year}{1000 + int.Parse(username.Substring(7))}",
+                        BloodGroup = bloodGroup,
+                        Allergies = allergies,
+                        MedicalHistory = medHistory,
+                        EmergencyContactName = emergencyName,
+                        EmergencyContactPhone = emergencyPhone,
+                        InsuranceProvider = "BlueCross BlueShield",
+                        InsurancePolicyNumber = $"BC{1000000 + int.Parse(username.Substring(7))}",
+                        IsActive = true,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    };
+
+                    dbContext.Patients.Add(patient);
+                    patients.Add(patient);
+                }
+            }
+            else
+            {
+                var existingPatient = await dbContext.Patients.FirstOrDefaultAsync(p => p.UserId == patientUser.Id);
+                if (existingPatient != null)
+                    patients.Add(existingPatient);
+            }
+        }
+
+        await dbContext.SaveChangesAsync();
+
+        // ========== CREATE DOCTOR SCHEDULES ==========
+        if (!dbContext.DoctorSchedules.Any())
+        {
+            var schedules = new List<DoctorSchedule>();
+            foreach (var doctor in doctors)
+            {
+                // Monday to Friday schedules
+                for (int day = 1; day <= 5; day++)
+                {
+                    schedules.Add(new DoctorSchedule
+                    {
+                        DoctorId = doctor.Id,
+                        DayOfWeek = day,
+                        StartTime = new TimeOnly(9, 0, 0),
+                        EndTime = new TimeOnly(17, 0, 0),
+                        AppointmentDurationInMinutes = 30,
+                        IsActive = true,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    });
+                }
+            }
+
+            dbContext.DoctorSchedules.AddRange(schedules);
+            await dbContext.SaveChangesAsync();
+        }
+
+        // ========== CREATE APPOINTMENTS ==========
+        if (!dbContext.Appointments.Any())
+        {
+            var appointments = new List<Appointment>();
+            var appointmentStatuses = new[] { "Scheduled", "Completed", "Scheduled", "Scheduled" };
+            var appointmentTypes = new[] { "Consultation", "Follow-up", "Check-up", "Follow-up" };
+
+            int appointmentIndex = 0;
+            foreach (var patient in patients)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    var doctor = doctors[appointmentIndex % doctors.Count];
+                    var appointmentDate = DateTime.UtcNow.AddDays(i + 1).AddHours(10 + i);
+
+                    var appointment = new Appointment
+                    {
+                        PatientId = patient.Id,
+                        DoctorId = doctor.Id,
+                        AppointmentDateTime = appointmentDate,
+                        ReasonForVisit = new[] { "Regular checkup", "Consultation", "Follow-up visit", "Health screening", "Treatment review" }[i % 5],
+                        Status = appointmentStatuses[i % appointmentStatuses.Length],
+                        Notes = $"Patient with {patient.MedicalHistory ?? "no known history"}",
+                        AppointmentType = appointmentTypes[i % appointmentTypes.Length],
+                        DurationInMinutes = 30,
+                        CreatedAt = DateTime.UtcNow,
+                        UpdatedAt = DateTime.UtcNow
+                    };
+
+                    appointments.Add(appointment);
+                    appointmentIndex++;
+                }
+            }
+
+            dbContext.Appointments.AddRange(appointments);
+            await dbContext.SaveChangesAsync();
+        }
+
+        // ========== CREATE MEDICAL RECORDS ==========
+        if (!dbContext.MedicalRecords.Any())
+        {
+            var medicalRecords = new List<MedicalRecord>();
+            var random = new Random();
+
+            foreach (var patient in patients)
+            {
+                foreach (var appointment in await dbContext.Appointments
+                    .Where(a => a.PatientId == patient.Id && a.Status == "Completed")
+                    .ToListAsync())
+                {
+                    var doctor = appointment.Doctor;
+
+                    var record = new MedicalRecord
+                    {
+                        PatientId = patient.Id,
+                        DoctorId = appointment.DoctorId,
+                        AppointmentId = appointment.Id,
+                        Diagnosis = new[] { "Hypertension Stage 2", "Type 2 Diabetes Mellitus", "Migraine Disorder", "Respiratory Infection", "Anxiety Disorder" }[random.Next(5)],
+                        Symptoms = new[] { "Headache, fatigue, chest pain", "Increased thirst, frequent urination", "Severe headaches, sensitivity to light", "Cough, fever, shortness of breath", "Nervousness, palpitations" }[random.Next(5)],
+                        PhysicalExamination = "Patient vitals within acceptable range. No acute distress observed.",
+                        LabTestResults = "Blood pressure elevated, Blood glucose slightly elevated, Cholesterol normal",
+                        VisitNotes = $"Patient consulted for routine check-up. Discussed lifestyle modifications and medication compliance.",
+                        TreatmentPlan = "Continue current medications, Follow-up in 2 weeks, Diet and exercise recommendations",
+                        CreatedAt = appointment.CreatedAt,
+                        UpdatedAt = appointment.UpdatedAt
+                    };
+
+                    medicalRecords.Add(record);
+                }
+            }
+
+            if (medicalRecords.Count > 0)
+            {
+                dbContext.MedicalRecords.AddRange(medicalRecords);
+                await dbContext.SaveChangesAsync();
+            }
+        }
+
+        Log.Information("Database seeding completed successfully!");
+        Log.Information("Admin: admin@hospital.com / Admin@123456");
+        Log.Information("Doctors: dr.smith/jones/williams/brown/davis@hospital.com / Doctor@123456");
+        Log.Information("Patients: patient1-5 with john.murphy/alice.johnson/etc @email.com / Patient@123456");
+    }
+    catch (Exception ex)
+    {
+        Log.Error(ex, "Error during database seeding");
+    }
+}
+
+app.Run();

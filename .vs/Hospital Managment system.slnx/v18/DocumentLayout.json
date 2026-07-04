@@ -1,0 +1,1097 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Asp.netcore\\Hospital Managment system\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\data\\appdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\data\\appdbcontextfactory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\hospital managment system.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\hospital managment system.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\doctor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\controllers\\medicalrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\controllers\\medicalrecordscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\repositories\\unitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\mapping\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\controllers\\appointmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\controllers\\doctorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\controllers\\patientscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\patient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\dtos\\doctordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\dtos\\doctordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\dtos\\patientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\dtos\\patientdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\idoctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\services\\deparmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\services\\deparmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\services\\medicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\services\\medicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\services\\appointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\services\\doctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\services\\patientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\idashboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\idepartmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\imedicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\imedicalrecordservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\helpers\\paginationhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\helpers\\paginationhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\helpers\\claimshelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\helpers\\claimshelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\iappointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\iappointmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\ipatientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\ipatientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\idoctorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\validators\\medicalrecordvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\validators\\medicalrecordvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\validators\\appointmentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\validators\\appointmentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\validators\\patientvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\validators\\patientvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\validators\\doctorvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\validators\\doctorvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\validators\\departmentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\validators\\departmentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\validators\\authvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\validators\\authvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\repositories\\medicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\repositories\\medicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\repositories\\appointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\repositories\\appointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\repositories\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\repositories\\doctorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\repositories\\patientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\repositories\\patientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\repositories\\repository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\idepartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\idepartmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\imedicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\imedicalrecordrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\iappointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\iappointmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\ipatientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\ipatientrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\dtos\\prescriptiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\dtos\\prescriptiondto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\dtos\\medicalrecorddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\dtos\\medicalrecorddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\dtos\\appointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\dtos\\appointmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\dtos\\departmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\dtos\\departmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\dtos\\authdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\dtos\\authdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\prescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\prescription.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\medicalrecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\appointment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\doctorschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\doctorschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|c:\\asp.netcore\\hospital managment system\\hospital managment system\\models\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{22DAE4D4-179E-CF99-D5A0-C3A91A12663C}|Hospital Managment system\\Hospital Managment system.csproj|solutionrelative:hospital managment system\\models\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContextFactory.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Data\\AppDbContextFactory.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Data\\AppDbContextFactory.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Data\\AppDbContextFactory.cs",
+              "RelativeToolTip": "Hospital Managment system\\Data\\AppDbContextFactory.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAcwBUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:17:02.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Program.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Program.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Program.cs",
+              "RelativeToolTip": "Hospital Managment system\\Program.cs",
+              "ViewState": "AgIAAK0BAAAAAAAAAAAAAL8BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:15:26.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Hospital Managment system.csproj",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Hospital Managment system.csproj",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Hospital Managment system.csproj",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Hospital Managment system.csproj",
+              "RelativeToolTip": "Hospital Managment system\\Hospital Managment system.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-04T16:11:29.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\README.md",
+              "RelativeDocumentMoniker": "Hospital Managment system\\README.md",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\README.md",
+              "RelativeToolTip": "Hospital Managment system\\README.md",
+              "ViewState": "AgIAAAECAAAAAAAAAAAAAA0CAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-07-04T16:11:16.043Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Doctor.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Doctor.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\Doctor.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Doctor.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\Doctor.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAnwB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:16.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\appsettings.json",
+              "RelativeDocumentMoniker": "Hospital Managment system\\appsettings.json",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\appsettings.json",
+              "RelativeToolTip": "Hospital Managment system\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-04T16:07:36.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Hospital Managment system\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAawJAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:53.815Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Hospital Managment system\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:10:44.243Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "DepartmentsController.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\DepartmentsController.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Controllers\\DepartmentsController.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\DepartmentsController.cs",
+              "RelativeToolTip": "Hospital Managment system\\Controllers\\DepartmentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:10:21.047Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MedicalRecordsController.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\MedicalRecordsController.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Controllers\\MedicalRecordsController.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\MedicalRecordsController.cs",
+              "RelativeToolTip": "Hospital Managment system\\Controllers\\MedicalRecordsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:10:12.637Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UnitOfWork.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\UnitOfWork.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Repositories\\UnitOfWork.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\UnitOfWork.cs",
+              "RelativeToolTip": "Hospital Managment system\\Repositories\\UnitOfWork.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAAwGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:21.436Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Mapping\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Mapping\\MappingProfile.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Mapping\\MappingProfile.cs",
+              "RelativeToolTip": "Hospital Managment system\\Mapping\\MappingProfile.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAEwIQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:08.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AppointmentsController.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\AppointmentsController.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Controllers\\AppointmentsController.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\AppointmentsController.cs",
+              "RelativeToolTip": "Hospital Managment system\\Controllers\\AppointmentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:10:02.567Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "DoctorsController.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\DoctorsController.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Controllers\\DoctorsController.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\DoctorsController.cs",
+              "RelativeToolTip": "Hospital Managment system\\Controllers\\DoctorsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:09:49.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PatientsController.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\PatientsController.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Controllers\\PatientsController.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\PatientsController.cs",
+              "RelativeToolTip": "Hospital Managment system\\Controllers\\PatientsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:09:39.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Hospital Managment system\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAN8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:09:23.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Patient.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Patient.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\Patient.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Patient.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\Patient.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:20.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "DoctorDto.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\DoctorDto.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\DTOs\\DoctorDto.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\DoctorDto.cs",
+              "RelativeToolTip": "Hospital Managment system\\DTOs\\DoctorDto.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAYwLgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:19.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PatientDto.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\PatientDto.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\DTOs\\PatientDto.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\PatientDto.cs",
+              "RelativeToolTip": "Hospital Managment system\\DTOs\\PatientDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:27.418Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "IDoctorRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDoctorRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IDoctorRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDoctorRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IDoctorRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:04:01.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "DeparmentService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\DeparmentService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Services\\DeparmentService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\DeparmentService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Services\\DeparmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:09:09.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "MedicalRecordService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\MedicalRecordService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Services\\MedicalRecordService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\MedicalRecordService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Services\\MedicalRecordService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:08:56.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "AppointmentService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\AppointmentService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Services\\AppointmentService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\AppointmentService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Services\\AppointmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:08:44.033Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "DoctorService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\DoctorService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Services\\DoctorService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\DoctorService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Services\\DoctorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:08:30.431Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "PatientService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\PatientService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Services\\PatientService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\PatientService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Services\\PatientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:08:17.02Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Services\\AuthService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Services\\AuthService.cs",
+              "ViewState": "AgIAAMIAAAAAAAAAAAAuwOkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:08:05.992Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "IDashboardService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDashboardService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IDashboardService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDashboardService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IDashboardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:07:09.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "IDepartmentService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDepartmentService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IDepartmentService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDepartmentService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IDepartmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:07:04.994Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "IMedicalRecordService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IMedicalRecordService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IMedicalRecordService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IMedicalRecordService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IMedicalRecordService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:59.615Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "PaginationHelper.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Helpers\\PaginationHelper.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Helpers\\PaginationHelper.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Helpers\\PaginationHelper.cs",
+              "RelativeToolTip": "Hospital Managment system\\Helpers\\PaginationHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:25.666Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ClaimsHelper.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Helpers\\ClaimsHelper.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Helpers\\ClaimsHelper.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Helpers\\ClaimsHelper.cs",
+              "RelativeToolTip": "Hospital Managment system\\Helpers\\ClaimsHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:20.931Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ExceptionHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeToolTip": "Hospital Managment system\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:15.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "IAppointmentService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IAppointmentService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IAppointmentService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IAppointmentService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IAppointmentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:52.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IAuthService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IAuthService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IAuthService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:31.963Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "IPatientService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IPatientService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IPatientService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IPatientService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IPatientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:37.565Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IDoctorService.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDoctorService.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IDoctorService.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDoctorService.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IDoctorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:06:46.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "MedicalRecordValidator.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\MedicalRecordValidator.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Validators\\MedicalRecordValidator.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\MedicalRecordValidator.cs",
+              "RelativeToolTip": "Hospital Managment system\\Validators\\MedicalRecordValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:57.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "AppointmentValidator.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\AppointmentValidator.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Validators\\AppointmentValidator.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\AppointmentValidator.cs",
+              "RelativeToolTip": "Hospital Managment system\\Validators\\AppointmentValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:51.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "PatientValidator.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\PatientValidator.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Validators\\PatientValidator.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\PatientValidator.cs",
+              "RelativeToolTip": "Hospital Managment system\\Validators\\PatientValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:45.885Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "DoctorValidator.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\DoctorValidator.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Validators\\DoctorValidator.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\DoctorValidator.cs",
+              "RelativeToolTip": "Hospital Managment system\\Validators\\DoctorValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:40.92Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "DepartmentValidator.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\DepartmentValidator.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Validators\\DepartmentValidator.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\DepartmentValidator.cs",
+              "RelativeToolTip": "Hospital Managment system\\Validators\\DepartmentValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:36.611Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "AuthValidator.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\AuthValidator.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Validators\\AuthValidator.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Validators\\AuthValidator.cs",
+              "RelativeToolTip": "Hospital Managment system\\Validators\\AuthValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:32.044Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "DepartmentRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\DepartmentRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Repositories\\DepartmentRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\DepartmentRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Repositories\\DepartmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:15.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "MedicalRecordRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\MedicalRecordRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Repositories\\MedicalRecordRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\MedicalRecordRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Repositories\\MedicalRecordRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:10.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "AppointmentRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\AppointmentRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Repositories\\AppointmentRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\AppointmentRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Repositories\\AppointmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:05:05.764Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "DoctorRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\DoctorRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Repositories\\DoctorRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\DoctorRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Repositories\\DoctorRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:04:57.982Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "PatientRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\PatientRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Repositories\\PatientRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\PatientRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Repositories\\PatientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:04:29.151Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Repository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\Repository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Repositories\\Repository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Repositories\\Repository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Repositories\\Repository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:04:24.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IUnitOfWork.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:04:19.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "IDepartmentRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDepartmentRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IDepartmentRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IDepartmentRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IDepartmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:04:15.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "IMedicalRecordRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IMedicalRecordRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IMedicalRecordRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IMedicalRecordRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IMedicalRecordRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:04:11.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "IAppointmentRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IAppointmentRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IAppointmentRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IAppointmentRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IAppointmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:04:06.809Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "IPatientRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IPatientRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IPatientRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IPatientRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IPatientRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:56.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Interfaces\\IRepository.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "Hospital Managment system\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:52.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "PrescriptionDto.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\PrescriptionDto.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\DTOs\\PrescriptionDto.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\PrescriptionDto.cs",
+              "RelativeToolTip": "Hospital Managment system\\DTOs\\PrescriptionDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:45.378Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "MedicalRecordDto.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\MedicalRecordDto.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\DTOs\\MedicalRecordDto.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\MedicalRecordDto.cs",
+              "RelativeToolTip": "Hospital Managment system\\DTOs\\MedicalRecordDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:40.12Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "AppointmentDto.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\AppointmentDto.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\DTOs\\AppointmentDto.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\AppointmentDto.cs",
+              "RelativeToolTip": "Hospital Managment system\\DTOs\\AppointmentDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:33.562Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "DepartmentDto.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\DepartmentDto.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\DTOs\\DepartmentDto.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\DepartmentDto.cs",
+              "RelativeToolTip": "Hospital Managment system\\DTOs\\DepartmentDto.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAUwE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:12.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "AuthDto.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\AuthDto.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\DTOs\\AuthDto.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\DTOs\\AuthDto.cs",
+              "RelativeToolTip": "Hospital Managment system\\DTOs\\AuthDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAOcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:03:07.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "Prescription.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Prescription.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\Prescription.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Prescription.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\Prescription.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:39.527Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "MedicalRecord.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\MedicalRecord.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\MedicalRecord.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\MedicalRecord.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\MedicalRecord.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:35.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "Appointment.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Appointment.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\Appointment.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Appointment.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\Appointment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:30.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "DoctorSchedule.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\DoctorSchedule.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\DoctorSchedule.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\DoctorSchedule.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\DoctorSchedule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:25.028Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "Department.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Department.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\Department.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\Department.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\Department.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:12.187Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\User.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\User.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:09.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "Hospital Managment system\\Models\\BaseEntity.cs",
+              "ToolTip": "C:\\Asp.netcore\\Hospital Managment system\\Hospital Managment system\\Models\\BaseEntity.cs",
+              "RelativeToolTip": "Hospital Managment system\\Models\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-04T16:02:03.396Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
