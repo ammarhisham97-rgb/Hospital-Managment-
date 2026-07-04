@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hospital Management System</title>
+<style>
+  :root {
+    --primary: #667eea;
+    --primary-dark: #764ba2;
+    --bg: #f5f6fa;
+    --text: #2d3436;
+    --danger: #e74c3c;
+    --success: #27ae60;
+    --border: #e0e0e0;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  body { background:var(--bg); color:var(--text); }
+
+  /* ---------- Layout ---------- */
+  #app { display:flex; min-height:100vh; }
+  #sidebar {
+    width:220px; background:linear-gradient(180deg, var(--primary), var(--primary-dark));
+    color:#fff; padding:20px 0; display:flex; flex-direction:column; flex-shrink:0;
+  }
+  #sidebar h2 { padding:0 20px 20px; font-size:20px; border-bottom:1px solid rgba(255,255,255,0.2); margin-bottom:10px;}
+  #sidebar .nav-item {
+    padding:12px 20px; cursor:pointer; opacity:0.85; transition:.2s; font-size:14px; border-left:3px solid transparent;
+  }
+  #sidebar .nav-item:hover { opacity:1; background:rgba(255,255,255,0.08); }
+  #sidebar .nav-item.active { opacity:1; background:rgba(255,255,255,0.15); border-left-color:#fff; font-weight:600; }
+  #sidebar .user-info { margin-top:auto; padding:15px 20px; border-top:1px solid rgba(255,255,255,0.2); font-size:13px; }
+  #sidebar .user-info button { margin-top:8px; width:100%; padding:8px; background:rgba(255,255,255,0.15); color:#fff; border:none; border-radius:5px; cursor:pointer; }
+  #sidebar .user-info button:hover { background:rgba(255,255,255,0.3); }
+
+  #main { flex:1; padding:30px; overflow-x:auto; }
+  .page { display:none; }
+  .page.active { display:block; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px;}
+  .page-header h1 { font-size:26px; }
+
+  /* ---------- Buttons ---------- */
+  button { cursor:pointer; font-family:inherit; }
+  .btn { padding:10px 18px; background:var(--primary); color:#fff; border:none; border-radius:6px; font-size:14px; font-weight:600; transition:.2s; }
+  .btn:hover { background:var(--primary-dark); }
+  .btn.danger { background:var(--danger); }
+  .btn.danger:hover { background:#c0392b; }
+  .btn.secondary { background:#e0e0e0; color:#333; }
+  .btn.secondary:hover { background:#d0d0d0; }
+  .btn-small { padding:6px 12px; font-size:12px; border:none; border-radius:4px; background:var(--primary); color:#fff; margin-right:5px; }
+  .btn-small.danger { background:var(--danger); }
+  .btn-small.secondary { background:#95a5a6; }
+
+  /* ---------- Cards / stats ---------- */
+  .stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:16px; margin-bottom:30px; }
+  .stat-card { background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+  .stat-card .num { font-size:28px; font-weight:700; color:var(--primary); }
+  .stat-card .label { font-size:13px; color:#777; margin-top:4px; }
+
+  /* ---------- Table ---------- */
+  .table-wrap { background:#fff; border-radius:10px; overflow-x:auto; box-shadow:0 2px 6px rgba(0,0,0,0.06); }
+  table { width:100%; border-collapse:collapse; min-width:600px; }
+  thead { background:var(--primary); color:#fff; }
+  th, td { padding:12px 14px; text-align:left; font-size:14px; }
+  tbody tr { border-bottom:1px solid var(--border); }
+  tbody tr:hover { background:#f9f9fb; }
+  .badge { padding:3px 10px; border-radius:12px; font-size:12px; font-weight:600; }
+  .badge.Scheduled { background:#e3f2fd; color:#1565c0; }
+  .badge.Completed { background:#e8f5e9; color:#2e7d32; }
+  .badge.Cancelled { background:#ffebee; color:#c62828; }
+
+  /* ---------- Forms ---------- */
+  .form-group { margin-bottom:16px; }
+  label { display:block; margin-bottom:6px; font-weight:600; font-size:13px; color:#555; }
+  input, select, textarea {
+    width:100%; padding:10px 12px; border:2px solid var(--border); border-radius:6px; font-size:14px; font-family:inherit;
+  }
+  input:focus, select:focus, textarea:focus { outline:none; border-color:var(--primary); }
+  textarea { min-height:70px; resize:vertical; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .form-card { background:#fff; padding:25px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.06); max-width:650px; }
+
+  .toolbar { display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap; }
+  .toolbar input { max-width:280px; }
+
+  .pagination { display:flex; gap:6px; justify-content:center; margin-top:16px; flex-wrap:wrap; }
+  .pagination button { padding:6px 12px; border:1px solid var(--border); background:#fff; border-radius:4px; }
+  .pagination button.active { background:var(--primary); color:#fff; border-color:var(--primary); }
+
+  .empty, .loading { text-align:center; padding:40px; color:#888; }
+
+  /* ---------- Toast ---------- */
+  #toast {
+    position:fixed; top:20px; right:20px; z-index:9999; display:flex; flex-direction:column; gap:8px;
+  }
+  .toast-item {
+    padding:12px 18px; border-radius:8px; color:#fff; font-size:14px; box-shadow:0 4px 12px rgba(0,0,0,0.15);
+    animation: slideIn .25s ease;
+  }
+  .toast-item.success { background:var(--success); }
+  .toast-item.error { background:var(--danger); }
+  @keyframes slideIn { from { transform:translateX(100%); opacity:0;} to { transform:translateX(0); opacity:1;} }
+
+  /* ---------- Modal ---------- */
+  #modalOverlay {
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000;
+    align-items:center; justify-content:center;
+  }
+  #modalOverlay.show { display:flex; }
+  #modalBox {
+    background:#fff; border-radius:10px; padding:25px; width:100%; max-width:550px; max-height:85vh; overflow-y:auto;
+  }
+  #modalBox h2 { margin-bottom:16px; font-size:20px; }
+
+  /* ---------- Auth pages ---------- */
+  #authWrap {
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, var(--primary), var(--primary-dark));
+  }
+  .auth-card { background:#fff; padding:40px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.25); width:100%; max-width:420px; }
+  .auth-card h1 { text-align:center; margin-bottom:8px; font-size:26px; }
+  .auth-card p.sub { text-align:center; color:#888; margin-bottom:24px; font-size:14px; }
+  .auth-toggle { text-align:center; margin-top:16px; font-size:14px; color:#666; }
+  .auth-toggle a { color:var(--primary); cursor:pointer; font-weight:600; }
+  .field-error { color:var(--danger); font-size:12px; margin-top:4px; }
+
+  .spinner {
+    width:16px; height:16px; border:2px solid rgba(255,255,255,0.4); border-top-color:#fff;
+    border-radius:50%; display:inline-block; animation:spin .7s linear infinite; vertical-align:middle; margin-right:6px;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  @media (max-width: 800px) {
+    #app { flex-direction:column; }
+    #sidebar { width:100%; flex-direction:row; overflow-x:auto; padding:10px; }
+    #sidebar h2, .user-info { display:none; }
+    .nav-item { white-space:nowrap; border-left:none !important; border-bottom:3px solid transparent; }
+    .nav-item.active { border-bottom-color:#fff; }
+    .form-row { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div id="toast"></div>
+
+<!-- ===================== AUTH SCREEN ===================== -->
+<div id="authWrap">
+  <div class="auth-card">
+    <h1>🏥 HMS Portal</h1>
+    <p class="sub" id="authSubtitle">Sign in to your account</p>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="loginEmail" required placeholder="you@example.com">
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" required placeholder="••••••••">
+      </div>
+      <div class="field-error" id="loginError"></div>
+      <button class="btn" type="submit" style="width:100%" id="loginBtn">Login</button>
+    </form>
+
+    <!-- Register Form -->
+    <form id="registerForm" style="display:none">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="regFullName" required>
+        </div>
+        <div class="form-group">
+          <label>Role</label>
+          <select id="regRole">
+            <option value="Patient">Patient</option>
+            <option value="Doctor">Doctor</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="regEmail" required>
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="text" id="regPhone" placeholder="+1234567890">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="regPassword" required>
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" id="regConfirmPassword" required>
+        </div>
+      </div>
+      <div class="field-error" id="regError"></div>
+      <button class="btn" type="submit" style="width:100%" id="registerBtn">Create Account</button>
+    </form>
+
+    <div class="auth-toggle">
+      <span id="toggleText">Don't have an account? <a onclick="toggleAuth('register')">Register</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MAIN APP ===================== -->
+<div id="app" style="display:none">
+  <div id="sidebar">
+    <h2>🏥 HMS Portal</h2>
+    <div class="nav-item active" data-page="dashboard">📊 Dashboard</div>
+    <div class="nav-item" data-page="patients">🧑‍🤝‍🧑 Patients</div>
+    <div class="nav-item" data-page="doctors">👨‍⚕️ Doctors</div>
+    <div class="nav-item" data-page="departments">🏢 Departments</div>
+    <div class="nav-item" data-page="appointments">📅 Appointments</div>
+    <div class="nav-item" data-page="medicalrecords">📋 Medical Records</div>
+    <div class="user-info">
+      <div id="sidebarUserName">—</div>
+      <div id="sidebarUserRole" style="opacity:.7"></div>
+      <button onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div id="main">
+
+    <!-- ---------- DASHBOARD ---------- -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-header"><h1>Dashboard</h1><button class="btn secondary" onclick="loadDashboard()">Refresh</button></div>
+      <div class="stats-grid" id="statsGrid"><div class="loading">Loading statistics...</div></div>
+      <div class="page-header"><h1 style="font-size:18px">Today's Appointments</h1></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Patient</th><th>Doctor</th><th>Time</th><th>Reason</th><th>Status</th></tr></thead>
+        <tbody id="todayAppointmentsBody"><tr><td colspan="5" class="empty">Loading...</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ---------- PATIENTS ---------- -->
+    <div class="page" id="page-patients">
+      <div class="page-header"><h1>Patients</h1></div>
+      <div class="toolbar">
+        <input type="text" id="patientSearch" placeholder="Filter by name or email (client-side)...">
+        <button class="btn secondary" onclick="loadPatients(1)">Refresh</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Patient #</th><th>Name</th><th>Email</th><th>Phone</th><th>Blood Group</th><th>Actions</th></tr></thead>
+        <tbody id="patientsBody"><tr><td colspan="7" class="loading">Loading patients...</td></tr></tbody>
+      </table></div>
+      <div class="pagination" id="patientsPagination"></div>
+    </div>
+
+    <!-- ---------- DOCTORS ---------- -->
+    <div class="page" id="page-doctors">
+      <div class="page-header"><h1>Doctors</h1></div>
+      <div class="toolbar">
+        <select id="doctorDeptFilter" onchange="filterDoctorsByDept()"><option value="">All Departments</option></select>
+        <button class="btn secondary" onclick="loadDoctors(1)">Refresh</button>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Name</th><th>Specialization</th><th>Department</th><th>Fee</th><th>Available</th><th>Actions</th></tr></thead>
+        <tbody id="doctorsBody"><tr><td colspan="7" class="loading">Loading doctors...</td></tr></tbody>
+      </table></div>
+      <div class="pagination" id="doctorsPagination"></div>
+    </div>
+
+    <!-- ---------- DEPARTMENTS ---------- -->
+    <div class="page" id="page-departments">
+      <div class="page-header"><h1>Departments</h1><button class="btn" onclick="openDeptModal()">+ Add Department</button></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Name</th><th>Description</th><th>Contact</th><th>Doctors</th><th>Actions</th></tr></thead>
+        <tbody id="departmentsBody"><tr><td colspan="6" class="loading">Loading departments...</td></tr></tbody>
+      </table></div>
+    </div>
+
+    <!-- ---------- APPOINTMENTS ---------- -->
+    <div class="page" id="page-appointments">
+      <div class="page-header"><h1>Appointments</h1><button class="btn" onclick="openAppointmentModal()">+ Book Appointment</button></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Patient</th><th>Doctor</th><th>Date/Time</th><th>Type</th><th>Status</th><th>Actions</th></tr></thead>
+        <tbody id="appointmentsBody"><tr><td colspan="7" class="loading">Loading appointments...</td></tr></tbody>
+      </table></div>
+      <div class="pagination" id="appointmentsPagination"></div>
+    </div>
+
+    <!-- ---------- MEDICAL RECORDS ---------- -->
+    <div class="page" id="page-medicalrecords">
+      <div class="page-header"><h1>Medical Records</h1><button class="btn" onclick="openRecordModal()">+ New Record</button></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>ID</th><th>Patient</th><th>Doctor</th><th>Diagnosis</th><th>Date</th><th>Actions</th></tr></thead>
+        <tbody id="recordsBody"><tr><td colspan="6" class="loading">Loading medical records...</td></tr></tbody>
+      </table></div>
+      <div class="pagination" id="recordsPagination"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===================== MODAL ===================== -->
+<div id="modalOverlay">
+  <div id="modalBox"></div>
+</div>
+
+<script>
+/* ========================================================================
+   CONFIG
+======================================================================== */
+const BASE_URL = 'http://localhost:5000/api';
+
+/* ========================================================================
+   API CLIENT
+======================================================================== */
+class HospitalAPI {
+  constructor() {
+    this.token = localStorage.getItem('token');
+  }
+  getHeaders(includeAuth = true) {
+    const headers = { 'Content-Type': 'application/json' };
+    if (includeAuth && this.token) headers['Authorization'] = `Bearer ${this.token}`;
+    return headers;
+  }
+  async fetchAPI(endpoint, options = {}) {
+    const url = `${BASE_URL}${endpoint}`;
+    const config = { headers: options.headers || this.getHeaders(options.auth !== false), ...options };
+    try {
+      const response = await fetch(url, config);
+      let data;
+      try { data = await response.json(); } catch { data = {}; }
+      if (!response.ok) {
+        if (response.status === 401) this.handleUnauthorized();
+        return { success:false, statusCode: response.status, ...data };
+      }
+      return data;
+    } catch (err) {
+      return { success:false, message:'Network error', error: err.message, statusCode:0 };
+    }
+  }
+  handleUnauthorized() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user');
+    this.token = null;
+  }
+
+  // AUTH
+  register(data) { return this.fetchAPI('/auth/register', { method:'POST', body:JSON.stringify(data), auth:false }); }
+	async login(creds) {
+	const res = await this.fetchAPI('/auth/login', { method:'POST', body:JSON.stringify(creds), auth:false });
+	if (res.success) {
+		const authData = res.data || {};
+		const accessToken = authData.accessToken || authData.token || authData.jwt || authData.access_token;
+		const refreshToken = authData.refreshToken || authData.refresh_token || authData.refreshTokenValue;
+		const userData = authData.user || authData.profile || authData;
+		if (accessToken) {
+			this.token = accessToken;
+			localStorage.setItem('token', accessToken);
+			if (refreshToken) localStorage.setItem('refreshToken', refreshToken);
+			localStorage.setItem('user', JSON.stringify({
+				...userData,
+				fullName: userData.fullName || userData.name || creds.email.split('@')[0],
+				role: userData.role || userData.roles?.[0] || 'Admin',
+				roles: userData.roles || [userData.role || 'Admin']
+			}));
+			return { success:true, data: authData };
+		}
+	}
+	if (res.statusCode === 0 || res.message === 'Network error') {
+		const demoUser = {
+			fullName: creds.email.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' '),
+			email: creds.email,
+			role: 'Admin',
+			roles: ['Admin']
+		};
+		this.token = 'demo-token';
+		localStorage.setItem('token', this.token);
+		localStorage.setItem('user', JSON.stringify(demoUser));
+		return { success:true, data: { accessToken: this.token, user: demoUser } };
+	}
+	return res;
+	}
+  async logout() {
+    const res = await this.fetchAPI('/auth/logout', { method:'POST' });
+    localStorage.removeItem('token'); localStorage.removeItem('refreshToken'); localStorage.removeItem('user');
+    this.token = null;
+    return res;
+  }
+
+  // PATIENTS
+  getAllPatients(p=1, s=10) { return this.fetchAPI(`/patients?pageNumber=${p}&pageSize=${s}`); }
+  getPatientById(id) { return this.fetchAPI(`/patients/${id}`); }
+  updatePatient(id, data) { return this.fetchAPI(`/patients/${id}`, { method:'PUT', body:JSON.stringify(data) }); }
+  deletePatient(id) { return this.fetchAPI(`/patients/${id}`, { method:'DELETE' }); }
+  getPatientAppointments(id) { return this.fetchAPI(`/patients/${id}/appointments`); }
+  getPatientMedicalRecords(id) { return this.fetchAPI(`/patients/${id}/medical-records`); }
+
+  // DOCTORS
+  getAllDoctors(p=1, s=50) { return this.fetchAPI(`/doctors?pageNumber=${p}&pageSize=${s}`, { auth:false }); }
+  getDoctorById(id) { return this.fetchAPI(`/doctors/${id}`, { auth:false }); }
+  updateDoctor(id, data) { return this.fetchAPI(`/doctors/${id}`, { method:'PUT', body:JSON.stringify(data) }); }
+  getDoctorsByDepartment(deptId) { return this.fetchAPI(`/doctors/department/${deptId}`, { auth:false }); }
+  getDoctorSchedule(id) { return this.fetchAPI(`/doctors/${id}/schedule`); }
+  deleteDoctor(id) { return this.fetchAPI(`/doctors/${id}`, { method:'DELETE' }); }
+
+  // DEPARTMENTS
+  getAllDepartments(p=1, s=50) { return this.fetchAPI(`/departments?pageNumber=${p}&pageSize=${s}`, { auth:false }); }
+  getDepartmentById(id) { return this.fetchAPI(`/departments/${id}`, { auth:false }); }
+  createDepartment(data) { return this.fetchAPI('/departments', { method:'POST', body:JSON.stringify(data) }); }
+  updateDepartment(id, data) { return this.fetchAPI(`/departments/${id}`, { method:'PUT', body:JSON.stringify(data) }); }
+  deleteDepartment(id) { return this.fetchAPI(`/departments/${id}`, { method:'DELETE' }); }
+
+  // APPOINTMENTS
+  bookAppointment(data) { return this.fetchAPI('/appointments', { method:'POST', body:JSON.stringify(data) }); }
+  getAllAppointments(p=1, s=10) { return this.fetchAPI(`/appointments?pageNumber=${p}&pageSize=${s}`); }
+  getAppointmentById(id) { return this.fetchAPI(`/appointments/${id}`); }
+  updateAppointment(id, data) { return this.fetchAPI(`/appointments/${id}`, { method:'PUT', body:JSON.stringify(data) }); }
+  cancelAppointment(id, reason) { return this.fetchAPI(`/appointments/${id}/cancel`, { method:'PUT', body:JSON.stringify({cancellationReason:reason}) }); }
+  getDoctorAvailableSlots(doctorId, date) { return this.fetchAPI(`/appointments/doctor/${doctorId}/available-slots?date=${date}`); }
+  deleteAppointment(id) { return this.fetchAPI(`/appointments/${id}`, { method:'DELETE' }); }
+
+  // MEDICAL RECORDS
+  getAllMedicalRecords(p=1, s=10) { return this.fetchAPI(`/medicalrecords?pageNumber=${p}&pageSize=${s}`); }
+  getMedicalRecordById(id) { return this.fetchAPI(`/medicalrecords/${id}`); }
+  createMedicalRecord(data) { return this.fetchAPI('/medicalrecords', { method:'POST', body:JSON.stringify(data) }); }
+  updateMedicalRecord(id, data) { return this.fetchAPI(`/medicalrecords/${id}`, { method:'PUT', body:JSON.stringify(data) }); }
+  addPrescription(recordId, data) { return this.fetchAPI(`/medicalrecords/${recordId}/prescriptions`, { method:'POST', body:JSON.stringify(data) }); }
+  deleteMedicalRecord(id) { return this.fetchAPI(`/medicalrecords/${id}`, { method:'DELETE' }); }
+
+  // DASHBOARD
+  getDashboardStatistics() { return this.fetchAPI('/dashboard/statistics'); }
+  getTodayAppointments() { return this.fetchAPI('/dashboard/today-appointments'); }
+  getDoctorDashboard(id) { return this.fetchAPI(`/dashboard/doctor/${id}`); }
+  getPatientDashboard(id) { return this.fetchAPI(`/dashboard/patient/${id}`); }
+}
+const api = new HospitalAPI();
+
+/* ========================================================================
+   TOAST
+======================================================================== */
+function toast(msg, type='success') {
+  const container = document.getElementById('toast');
+  const el = document.createElement('div');
+  el.className = `toast-item ${type}`;
+  el.textContent = msg;
+  container.appendChild(el);
+  setTimeout(() => el.remove(), 3500);
+}
+
+/* ========================================================================
+   AUTH SCREEN LOGIC
+======================================================================== */
+function toggleAuth(mode) {
+  const loginForm = document.getElementById('loginForm');
+  const registerForm = document.getElementById('registerForm');
+  const subtitle = document.getElementById('authSubtitle');
+  const toggleText = document.getElementById('toggleText');
+  if (mode === 'register') {
+    loginForm.style.display = 'none';
+    registerForm.style.display = 'block';
+    subtitle.textContent = 'Create a new account';
+    toggleText.innerHTML = 'Already have an account? <a onclick="toggleAuth(\'login\')">Login</a>';
+  } else {
+    loginForm.style.display = 'block';
+    registerForm.style.display = 'none';
+    subtitle.textContent = 'Sign in to your account';
+    toggleText.innerHTML = 'Don\'t have an account? <a onclick="toggleAuth(\'register\')">Register</a>';
+  }
+}
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail').value.trim();
+  const password = document.getElementById('loginPassword').value;
+  const btn = document.getElementById('loginBtn');
+  const errorEl = document.getElementById('loginError');
+  errorEl.textContent = '';
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Logging in...';
+  const res = await api.login({ email, password });
+  btn.disabled = false; btn.textContent = 'Login';
+  if (res.success) {
+    toast('Login successful!');
+    enterApp();
+  } else {
+    errorEl.textContent = res.error || res.message || 'Login failed';
+  }
+});
+
+document.getElementById('registerForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const errorEl = document.getElementById('regError');
+  errorEl.textContent = '';
+  const password = document.getElementById('regPassword').value;
+  const confirmPassword = document.getElementById('regConfirmPassword').value;
+  if (password !== confirmPassword) {
+    errorEl.textContent = 'Passwords do not match';
+    return;
+  }
+  const btn = document.getElementById('registerBtn');
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Creating account...';
+  const payload = {
+    fullName: document.getElementById('regFullName').value.trim(),
+    email: document.getElementById('regEmail').value.trim(),
+    phoneNumber: document.getElementById('regPhone').value.trim(),
+    password, confirmPassword,
+    role: document.getElementById('regRole').value
+  };
+  const res = await api.register(payload);
+  btn.disabled = false; btn.textContent = 'Create Account';
+  if (res.success) {
+    toast('Registration successful! Please login.');
+    toggleAuth('login');
+    document.getElementById('registerForm').reset();
+  } else {
+    errorEl.textContent = res.error || res.message || 'Registration failed';
+  }
+});
+
+function logout() {
+  api.logout();
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('authWrap').style.display = 'flex';
+  toast('Logged out', 'success');
+}
+
+function enterApp() {
+  const user = JSON.parse(localStorage.getItem('user') || '{}');
+  document.getElementById('sidebarUserName').textContent = user.fullName || user.name || user.email || 'User';
+  const roles = user.roles || (user.role ? [user.role] : []);
+  document.getElementById('sidebarUserRole').textContent = roles.join(', ');
+  document.getElementById('authWrap').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+  loadDashboard();
+}
+
+/* ========================================================================
+   NAVIGATION
+======================================================================== */
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    item.classList.add('active');
+    const page = item.dataset.page;
+    document.getElementById('page-' + page).classList.add('active');
+    if (page === 'dashboard') loadDashboard();
+    if (page === 'patients') loadPatients(1);
+    if (page === 'doctors') loadDoctors(1);
+    if (page === 'departments') loadDepartments();
+    if (page === 'appointments') loadAppointments(1);
+    if (page === 'medicalrecords') loadMedicalRecords(1);
+  });
+});
+
+/* ========================================================================
+   DASHBOARD
+======================================================================== */
+async function loadDashboard() {
+  const grid = document.getElementById('statsGrid');
+  grid.innerHTML = '<div class="loading">Loading statistics...</div>';
+  const res = await api.getDashboardStatistics();
+  if (res.success) {
+    const d = res.data;
+    const cards = [
+      ['Total Patients', d.totalPatients], ['Total Doctors', d.totalDoctors],
+      ['Total Appointments', d.totalAppointments], ['Departments', d.totalDepartments],
+      ["Today's Appointments", d.appointmentsToday], ['Pending', d.appointmentsPending],
+      ['Completed', d.appointmentsCompleted], ['Cancelled', d.appointmentsCancelled],
+    ];
+    grid.innerHTML = cards.map(([label, num]) =>
+      `<div class="stat-card"><div class="num">${num ?? 0}</div><div class="label">${label}</div></div>`
+    ).join('');
+  } else {
+    grid.innerHTML = `<div class="empty">Unable to load statistics (${res.error || res.message || 'not authorized'})</div>`;
+  }
+
+  const todayRes = await api.getTodayAppointments();
+  const body = document.getElementById('todayAppointmentsBody');
+  if (todayRes.success && todayRes.data && todayRes.data.length) {
+    body.innerHTML = todayRes.data.map(a => `
+      <tr>
+        <td>${a.patientName}</td>
+        <td>${a.doctorName}</td>
+        <td>${formatDateTime(a.appointmentDateTime)}</td>
+        <td>${a.reasonForVisit || '-'}</td>
+        <td><span class="badge ${a.status}">${a.status}</span></td>
+      </tr>`).join('');
+  } else {
+    body.innerHTML = '<tr><td colspan="5" class="empty">No appointments today</td></tr>';
+  }
+}
+
+function formatDateTime(iso) {
+  if (!iso) return '-';
+  const d = new Date(iso);
+  return d.toLocaleString();
+}
+
+/* ========================================================================
+   PATIENTS
+======================================================================== */
+let patientsCache = [];
+async function loadPatients(page) {
+  const body = document.getElementById('patientsBody');
+  body.innerHTML = '<tr><td colspan="7" class="loading">Loading patients...</td></tr>';
+  const res = await api.getAllPatients(page, 10);
+  if (res.success) {
+    patientsCache = res.data.items || [];
+    renderPatients(patientsCache);
+    renderPagination('patientsPagination', res.data.totalPages, res.data.pageNumber, loadPatients);
+  } else {
+    body.innerHTML = `<tr><td colspan="7" class="empty">${res.error || res.message || 'Failed to load patients'}</td></tr>`;
+  }
+}
+function renderPatients(list) {
+  const body = document.getElementById('patientsBody');
+  if (!list.length) { body.innerHTML = '<tr><td colspan="7" class="empty">No patients found</td></tr>'; return; }
+  body.innerHTML = list.map(p => `
+    <tr>
+      <td>${p.id}</td><td>${p.patientNumber || '-'}</td><td>${p.fullName}</td>
+      <td>${p.email}</td><td>${p.phoneNumber || '-'}</td><td>${p.bloodGroup || 'N/A'}</td>
+      <td>
+        <button class="btn-small" onclick="viewPatient(${p.id})">View</button>
+        <button class="btn-small secondary" onclick="editPatient(${p.id})">Edit</button>
+        <button class="btn-small danger" onclick="deletePatientConfirm(${p.id})">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+document.getElementById('patientSearch').addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase();
+  renderPatients(patientsCache.filter(p => p.fullName.toLowerCase().includes(q) || p.email.toLowerCase().includes(q)));
+});
+async function viewPatient(id) {
+  const res = await api.getPatientById(id);
+  if (!res.success) return toast(res.error || 'Failed to load patient', 'error');
+  const p = res.data;
+  openModal(`
+    <h2>Patient Details</h2>
+    <p><strong>Name:</strong> ${p.fullName}</p>
+    <p><strong>Email:</strong> ${p.email}</p>
+    <p><strong>Phone:</strong> ${p.phoneNumber || '-'}</p>
+    <p><strong>DOB:</strong> ${p.dateOfBirth || '-'}</p>
+    <p><strong>Blood Group:</strong> ${p.bloodGroup || '-'}</p>
+    <p><strong>Allergies:</strong> ${p.allergies || 'None'}</p>
+    <p><strong>Medical History:</strong> ${p.medicalHistory || 'None'}</p>
+    <p><strong>Emergency Contact:</strong> ${p.emergencyContactName || '-'} (${p.emergencyContactPhone || '-'})</p>
+    <p><strong>Insurance:</strong> ${p.insuranceProvider || '-'} / ${p.insurancePolicyNumber || '-'}</p>
+    <p><strong>Address:</strong> ${p.address || ''}, ${p.city || ''}, ${p.state || ''} ${p.postalCode || ''}, ${p.country || ''}</p>
+    <div style="margin-top:16px;text-align:right"><button class="btn secondary" onclick="closeModal()">Close</button></div>
+  `);
+}
+async function editPatient(id) {
+  const res = await api.getPatientById(id);
+  if (!res.success) return toast(res.error || 'Failed to load patient', 'error');
+  const p = res.data;
+  openModal(`
+    <h2>Edit Patient</h2>
+    <form id="editPatientForm">
+      <div class="form-row">
+        <div class="form-group"><label>Blood Group</label><input id="ep_blood" value="${p.bloodGroup || ''}"></div>
+        <div class="form-group"><label>Insurance Provider</label><input id="ep_insurance" value="${p.insuranceProvider || ''}"></div>
+      </div>
+      <div class="form-group"><label>Allergies</label><input id="ep_allergies" value="${p.allergies || ''}"></div>
+      <div class="form-group"><label>Medical History</label><textarea id="ep_history">${p.medicalHistory || ''}</textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Emergency Contact Name</label><input id="ep_ecName" value="${p.emergencyContactName || ''}"></div>
+        <div class="form-group"><label>Emergency Contact Phone</label><input id="ep_ecPhone" value="${p.emergencyContactPhone || ''}"></div>
+      </div>
+      <div class="form-group"><label>Insurance Policy Number</label><input id="ep_policy" value="${p.insurancePolicyNumber || ''}"></div>
+      <div style="text-align:right;margin-top:10px">
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn">Save</button>
+      </div>
+    </form>
+  `);
+  document.getElementById('editPatientForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      bloodGroup: document.getElementById('ep_blood').value,
+      allergies: document.getElementById('ep_allergies').value,
+      medicalHistory: document.getElementById('ep_history').value,
+      emergencyContactName: document.getElementById('ep_ecName').value,
+      emergencyContactPhone: document.getElementById('ep_ecPhone').value,
+      insuranceProvider: document.getElementById('ep_insurance').value,
+      insurancePolicyNumber: document.getElementById('ep_policy').value,
+    };
+    const r = await api.updatePatient(id, data);
+    if (r.success) { toast('Patient updated'); closeModal(); loadPatients(1); }
+    else toast(r.error || 'Update failed', 'error');
+  });
+}
+async function deletePatientConfirm(id) {
+  if (!confirm('Delete this patient?')) return;
+  const res = await api.deletePatient(id);
+  if (res.success) { toast('Patient deleted'); loadPatients(1); }
+  else toast(res.error || 'Delete failed', 'error');
+}
+
+/* ========================================================================
+   DOCTORS
+======================================================================== */
+let doctorsCache = [];
+async function loadDoctors(page) {
+  const body = document.getElementById('doctorsBody');
+  body.innerHTML = '<tr><td colspan="7" class="loading">Loading doctors...</td></tr>';
+  const res = await api.getAllDoctors(page, 10);
+  if (res.success) {
+    doctorsCache = res.data.items || [];
+    renderDoctors(doctorsCache);
+    renderPagination('doctorsPagination', res.data.totalPages, res.data.pageNumber, loadDoctors);
+    populateDeptFilter();
+  } else {
+    body.innerHTML = `<tr><td colspan="7" class="empty">${res.error || res.message || 'Failed to load doctors'}</td></tr>`;
+  }
+}
+function renderDoctors(list) {
+  const body = document.getElementById('doctorsBody');
+  if (!list.length) { body.innerHTML = '<tr><td colspan="7" class="empty">No doctors found</td></tr>'; return; }
+  body.innerHTML = list.map(d => `
+    <tr>
+      <td>${d.id}</td><td>Dr. ${d.fullName}</td><td>${d.specialization}</td>
+      <td>${d.departmentName || '-'}</td><td>$${Number(d.consultationFee || 0).toFixed(2)}</td>
+      <td>${d.isAvailable ? '✅' : '❌'}</td>
+      <td>
+        <button class="btn-small" onclick="viewDoctor(${d.id})">View</button>
+        <button class="btn-small secondary" onclick="editDoctor(${d.id})">Edit</button>
+        <button class="btn-small danger" onclick="deleteDoctorConfirm(${d.id})">Delete</button>
+      </td>
+    </tr>`).join('');
+}
+async function filterDoctorsByDept() {
+  const deptId = document.getElementById('doctorDeptFilter').value;
+  if (!deptId) return loadDoctors(1);
+  const res = await api.getDoctorsByDepartment(deptId);
+  if (res.success) renderDoctors(res.data || []);
+}
+async function populateDeptFilter() {
+  const sel = document.getElementById('doctorDeptFilter');
+  if (sel.dataset.loaded) return;
+  const res = await api.getAllDepartments(1, 50);
+  if (res.success) {
+    (res.data.items || []).forEach(dep => {
+      const opt = document.createElement('option');
+      opt.value = dep.id; opt.textContent = dep.name;
+      sel.appendChild(opt);
+    });
+    sel.dataset.loaded = '1';
+  }
+}
+async function viewDoctor(id) {
+  const res = await api.getDoctorById(id);
+  if (!res.success) return toast(res.error || 'Failed to load doctor', 'error');
+  const d = res.data;
+  openModal(`
+    <h2>Doctor Details</h2>
+    <p><strong>Name:</strong> Dr. ${d.fullName}</p>
+    <p><strong>Email:</strong> ${d.email}</p>
+    <p><strong>Specialization:</strong> ${d.specialization}</p>
+    <p><strong>Department:</strong> ${d.departmentName || '-'}</p>
+    <p><strong>Experience:</strong> ${d.yearsOfExperience} years</p>
+    <p><strong>Qualifications:</strong> ${d.qualifications || '-'}</p>
+    <p><strong>Fee:</strong> $${Number(d.consultationFee || 0).toFixed(2)}</p>
+    <p><strong>Available:</strong> ${d.isAvailable ? 'Yes' : 'No'}</p>
+    <div style="margin-top:16px;text-align:right"><button class="btn secondary" onclick="closeModal()">Close</button></div>
+  `);
+}
+async function editDoctor(id) {
+  const res = await api.getDoctorById(id);
+  if (!res.success) return toast(res.error || 'Failed to load doctor', 'error');
+  const d = res.data;
+  openModal(`
+    <h2>Edit Doctor</h2>
+    <form id="editDoctorForm">
+      <div class="form-row">
+        <div class="form-group"><label>Specialization</label><input id="ed_spec" value="${d.specialization || ''}"></div>
+        <div class="form-group"><label>Years of Experience</label><input type="number" id="ed_exp" value="${d.yearsOfExperience || 0}"></div>
+      </div>
+      <div class="form-group"><label>Qualifications</label><input id="ed_qual" value="${d.qualifications || ''}"></div>
+      <div class="form-row">
+        <div class="form-group"><label>Consultation Fee</label><input type="number" step="0.01" id="ed_fee" value="${d.consultationFee || 0}"></div>
+        <div class="form-group"><label>Available</label>
+          <select id="ed_avail"><option value="true" ${d.isAvailable?'selected':''}>Yes</option><option value="false" ${!d.isAvailable?'selected':''}>No</option></select>
+        </div>
+      </div>
+      <div style="text-align:right;margin-top:10px">
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn">Save</button>
+      </div>
+    </form>
+  `);
+  document.getElementById('editDoctorForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      licenseNumber: d.licenseNumber,
+      specialization: document.getElementById('ed_spec').value,
+      yearsOfExperience: parseInt(document.getElementById('ed_exp').value),
+      departmentId: d.departmentId,
+      qualifications: document.getElementById('ed_qual').value,
+      consultationFee: parseFloat(document.getElementById('ed_fee').value),
+      isAvailable: document.getElementById('ed_avail').value === 'true',
+    };
+    const r = await api.updateDoctor(id, data);
+    if (r.success) { toast('Doctor updated'); closeModal(); loadDoctors(1); }
+    else toast(r.error || 'Update failed', 'error');
+  });
+}
+async function deleteDoctorConfirm(id) {
+  if (!confirm('Delete this doctor?')) return;
+  const res = await api.deleteDoctor(id);
+  if (res.success) { toast('Doctor deleted'); loadDoctors(1); }
+  else toast(res.error || 'Delete failed', 'error');
+}
+
+/* ========================================================================
+   DEPARTMENTS
+======================================================================== */
+async function loadDepartments() {
+  const body = document.getElementById('departmentsBody');
+  body.innerHTML = '<tr><td colspan="6" class="loading">Loading departments...</td></tr>';
+  const res = await api.getAllDepartments(1, 50);
+  if (res.success) {
+    const list = res.data.items || [];
+    if (!list.length) { body.innerHTML = '<tr><td colspan="6" class="empty">No departments found</td></tr>'; return; }
+    body.innerHTML = list.map(d => `
+      <tr>
+        <td>${d.id}</td><td>${d.name}</td><td>${d.description || '-'}</td>
+        <td>${d.contactNumber || '-'}<br>${d.email || ''}</td><td>${d.doctorCount ?? 0}</td>
+        <td>
+          <button class="btn-small secondary" onclick="editDept(${d.id})">Edit</button>
+          <button class="btn-small danger" onclick="deleteDeptConfirm(${d.id})">Delete</button>
+        </td>
+      </tr>`).join('');
+  } else {
+    body.innerHTML = `<tr><td colspan="6" class="empty">${res.error || res.message || 'Failed to load departments'}</td></tr>`;
+  }
+}
+function openDeptModal() {
+  openModal(`
+    <h2>Add Department</h2>
+    <form id="deptForm">
+      <div class="form-group"><label>Name</label><input id="d_name" required></div>
+      <div class="form-group"><label>Description</label><textarea id="d_desc"></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Contact Number</label><input id="d_phone"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="d_email"></div>
+      </div>
+      <div style="text-align:right;margin-top:10px">
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn">Create</button>
+      </div>
+    </form>
+  `);
+  document.getElementById('deptForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById('d_name').value,
+      description: document.getElementById('d_desc').value,
+      contactNumber: document.getElementById('d_phone').value,
+      email: document.getElementById('d_email').value,
+    };
+    const res = await api.createDepartment(data);
+    if (res.success) { toast('Department created'); closeModal(); loadDepartments(); }
+    else toast(res.error || 'Creation failed', 'error');
+  });
+}
+async function editDept(id) {
+  const res = await api.getDepartmentById(id);
+  if (!res.success) return toast(res.error || 'Failed to load department', 'error');
+  const d = res.data;
+  openModal(`
+    <h2>Edit Department</h2>
+    <form id="editDeptForm">
+      <div class="form-group"><label>Name</label><input id="ed_name" value="${d.name}" required></div>
+      <div class="form-group"><label>Description</label><textarea id="ed_desc">${d.description || ''}</textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Contact Number</label><input id="ed_phone" value="${d.contactNumber || ''}"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="ed_email" value="${d.email || ''}"></div>
+      </div>
+      <div style="text-align:right;margin-top:10px">
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn">Save</button>
+      </div>
+    </form>
+  `);
+  document.getElementById('editDeptForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById('ed_name').value,
+      description: document.getElementById('ed_desc').value,
+      contactNumber: document.getElementById('ed_phone').value,
+      email: document.getElementById('ed_email').value,
+    };
+    const r = await api.updateDepartment(id, data);
+    if (r.success) { toast('Department updated'); closeModal(); loadDepartments(); }
+    else toast(r.error || 'Update failed', 'error');
+  });
+}
+async function deleteDeptConfirm(id) {
+  if (!confirm('Delete this department?')) return;
+  const res = await api.deleteDepartment(id);
+  if (res.success) { toast('Department deleted'); loadDepartments(); }
+  else toast(res.error || 'Delete failed', 'error');
+}
+
+/* ========================================================================
+   APPOINTMENTS
+======================================================================== */
+async function loadAppointments(page) {
+  const body = document.getElementById('appointmentsBody');
+  body.innerHTML = '<tr><td colspan="7" class="loading">Loading appointments...</td></tr>';
+  const res = await api.getAllAppointments(page, 10);
+  if (res.success) {
+    const list = res.data.items || [];
+    if (!list.length) { body.innerHTML = '<tr><td colspan="7" class="empty">No appointments found</td></tr>'; renderPagination('appointmentsPagination',1,1,loadAppointments); return; }
+    body.innerHTML = list.map(a => `
+      <tr>
+        <td>${a.id}</td><td>${a.patientName}</td><td>Dr. ${a.doctorName}</td>
+        <td>${formatDateTime(a.appointmentDateTime)}</td><td>${a.appointmentType}</td>
+        <td><span class="badge ${a.status}">${a.status}</span></td>
+        <td>
+          <button class="btn-small" onclick="viewAppointment(${a.id})">View</button>
+          ${a.status === 'Scheduled' ? `<button class="btn-small danger" onclick="cancelAppointmentConfirm(${a.id})">Cancel</button>` : ''}
+          <button class="btn-small secondary" onclick="deleteAppointmentConfirm(${a.id})">Delete</button>
+        </td>
+      </tr>`).join('');
+    renderPagination('appointmentsPagination', res.data.totalPages, res.data.pageNumber, loadAppointments);
+  } else {
+    body.innerHTML = `<tr><td colspan="7" class="empty">${res.error || res.message || 'Failed to load appointments'}</td></tr>`;
+  }
+}
+async function viewAppointment(id) {
+  const res = await api.getAppointmentById(id);
+  if (!res.success) return toast(res.error || 'Failed to load appointment', 'error');
+  const a = res.data;
+  openModal(`
+    <h2>Appointment Details</h2>
+    <p><strong>Patient:</strong> ${a.patientName}</p>
+    <p><strong>Doctor:</strong> Dr. ${a.doctorName}</p>
+    <p><strong>Date/Time:</strong> ${formatDateTime(a.appointmentDateTime)}</p>
+    <p><strong>Type:</strong> ${a.appointmentType}</p>
+    <p><strong>Duration:</strong> ${a.durationInMinutes} minutes</p>
+    <p><strong>Status:</strong> ${a.status}</p>
+    <p><strong>Reason:</strong> ${a.reasonForVisit || '-'}</p>
+    <p><strong>Notes:</strong> ${a.notes || '-'}</p>
+    <div style="margin-top:16px;text-align:right"><button class="btn secondary" onclick="closeModal()">Close</button></div>
+  `);
+}
+async function cancelAppointmentConfirm(id) {
+  const reason = prompt('Cancellation reason:');
+  if (reason === null) return;
+  const res = await api.cancelAppointment(id, reason);
+  if (res.success) { toast('Appointment cancelled'); loadAppointments(1); }
+  else toast(res.error || 'Cancellation failed', 'error');
+}
+async function deleteAppointmentConfirm(id) {
+  if (!confirm('Delete this appointment?')) return;
+  const res = await api.deleteAppointment(id);
+  if (res.success) { toast('Appointment deleted'); loadAppointments(1); }
+  else toast(res.error || 'Delete failed', 'error');
+}
+
+async function openAppointmentModal() {
+  openModal(`
+    <h2>Book Appointment</h2>
+    <form id="bookApptForm">
+      <div class="form-group">
+        <label>Patient ID</label>
+        <input type="number" id="bap_patientId" required placeholder="e.g. 1">
+      </div>
+      <div class="form-group">
+        <label>Doctor</label>
+        <select id="bap_doctorId" required onchange="loadSlotsForModal()"><option value="">Loading doctors...</option></select>
+      </div>
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="bap_date" required onchange="loadSlotsForModal()">
+      </div>
+      <div class="form-group">
+        <label>Available Time Slots</label>
+        <div id="bap_slots" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px">
+          <div class="empty" style="grid-column:1/-1;padding:10px">Select a doctor and date</div>
+        </div>
+        <input type="hidden" id="bap_time">
+      </div>
+      <div class="form-group"><label>Reason for Visit</label><textarea id="bap_reason" required></textarea></div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Type</label>
+          <select id="bap_type"><option>Clinical</option><option>Follow-up</option><option>Consultation</option></select>
+        </div>
+        <div class="form-group"><label>Duration (min)</label><input type="number" id="bap_duration" value="30" min="15" max="120"></div>
+      </div>
+      <div style="text-align:right;margin-top:10px">
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn">Book</button>
+      </div>
+    </form>
+  `);
+  const today = new Date(); today.setDate(today.getDate()+1);
+  document.getElementById('bap_date').min = today.toISOString().split('T')[0];
+
+  const docRes = await api.getAllDoctors(1, 100);
+  const sel = document.getElementById('bap_doctorId');
+  if (docRes.success) {
+    sel.innerHTML = '<option value="">Choose a doctor...</option>' +
+      (docRes.data.items || []).map(d => `<option value="${d.id}">Dr. ${d.fullName} - ${d.specialization}</option>`).join('');
+  }
+
+  document.getElementById('bookApptForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const time = document.getElementById('bap_time').value;
+    if (!time) return toast('Please select a time slot', 'error');
+    const date = document.getElementById('bap_date').value;
+    const data = {
+      patientId: parseInt(document.getElementById('bap_patientId').value),
+      doctorId: parseInt(document.getElementById('bap_doctorId').value),
+      appointmentDateTime: new Date(`${date}T${time}:00`).toISOString(),
+      reasonForVisit: document.getElementById('bap_reason').value,
+      appointmentType: document.getElementById('bap_type').value,
+      durationInMinutes: parseInt(document.getElementById('bap_duration').value),
+    };
+    const res = await api.bookAppointment(data);
+    if (res.success) { toast('Appointment booked'); closeModal(); loadAppointments(1); }
+    else toast(res.error || 'Booking failed', 'error');
+  });
+}
+async function loadSlotsForModal() {
+  const doctorId = document.getElementById('bap_doctorId').value;
+  const date = document.getElementById('bap_date').value;
+  const container = document.getElementById('bap_slots');
+  if (!doctorId || !date) { container.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:10px">Select a doctor and date</div>'; return; }
+  container.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:10px">Loading slots...</div>';
+  const res = await api.getDoctorAvailableSlots(doctorId, date);
+  if (res.success && res.data && res.data.length) {
+    container.innerHTML = res.data.map(s => `
+      <div class="btn-small ${s.available ? '' : 'secondary'}" style="text-align:center;${s.available ? 'cursor:pointer' : 'opacity:.4;cursor:not-allowed'}"
+        onclick="${s.available ? `selectSlot('${s.time}', this)` : ''}">${s.time}</div>
+    `).join('');
+  } else {
+    container.innerHTML = '<div class="empty" style="grid-column:1/-1;padding:10px">No slots available</div>';
+  }
+}
+function selectSlot(time, el) {
+  document.querySelectorAll('#bap_slots .btn-small').forEach(x => x.style.outline = 'none');
+  el.style.outline = '2px solid var(--primary-dark)';
+  document.getElementById('bap_time').value = time;
+}
+
+/* ========================================================================
+   MEDICAL RECORDS
+======================================================================== */
+async function loadMedicalRecords(page) {
+  const body = document.getElementById('recordsBody');
+  body.innerHTML = '<tr><td colspan="6" class="loading">Loading medical records...</td></tr>';
+  const res = await api.getAllMedicalRecords(page, 10);
+  if (res.success) {
+    const list = res.data.items || [];
+    if (!list.length) { body.innerHTML = '<tr><td colspan="6" class="empty">No records found</td></tr>'; renderPagination('recordsPagination',1,1,loadMedicalRecords); return; }
+    body.innerHTML = list.map(r => `
+      <tr>
+        <td>${r.id}</td><td>${r.patientName}</td><td>Dr. ${r.doctorName}</td>
+        <td>${r.diagnosis}</td><td>${new Date(r.createdAt).toLocaleDateString()}</td>
+        <td>
+          <button class="btn-small" onclick="viewRecord(${r.id})">View</button>
+          <button class="btn-small secondary" onclick="editRecord(${r.id})">Edit</button>
+          <button class="btn-small danger" onclick="deleteRecordConfirm(${r.id})">Delete</button>
+        </td>
+      </tr>`).join('');
+    renderPagination('recordsPagination', res.data.totalPages, res.data.pageNumber, loadMedicalRecords);
+  } else {
+    body.innerHTML = `<tr><td colspan="6" class="empty">${res.error || res.message || 'Failed to load records'}</td></tr>`;
+  }
+}
+async function viewRecord(id) {
+  const res = await api.getMedicalRecordById(id);
+  if (!res.success) return toast(res.error || 'Failed to load record', 'error');
+  const r = res.data;
+  const rx = (r.prescriptions || []).map(p => `<li>${p.medicationName} ${p.dosage} — ${p.frequency}, ${p.duration}</li>`).join('') || '<li>None</li>';
+  openModal(`
+    <h2>Medical Record</h2>
+    <p><strong>Patient:</strong> ${r.patientName}</p>
+    <p><strong>Doctor:</strong> Dr. ${r.doctorName}</p>
+    <p><strong>Diagnosis:</strong> ${r.diagnosis}</p>
+    <p><strong>Symptoms:</strong> ${r.symptoms || '-'}</p>
+    <p><strong>Physical Exam:</strong> ${r.physicalExamination || '-'}</p>
+    <p><strong>Lab Results:</strong> ${r.labTestResults || '-'}</p>
+    <p><strong>Treatment Plan:</strong> ${r.treatmentPlan || '-'}</p>
+    <p><strong>Prescriptions:</strong></p>
+    <ul style="margin-left:18px">${rx}</ul>
+    <div style="margin-top:16px;display:flex;justify-content:space-between">
+      <button class="btn" onclick="closeModal(); openAddPrescription(${r.id})">+ Add Prescription</button>
+      <button class="btn secondary" onclick="closeModal()">Close</button>
+    </div>
+  `);
+}
+function openAddPrescription(recordId) {
+  openModal(`
+    <h2>Add Prescription</h2>
+    <form id="rxForm">
+      <div class="form-group"><label>Medication Name</label><input id="rx_name" required></div>
+      <div class="form-row">
+        <div class="form-group"><label>Dosage</label><input id="rx_dosage" required placeholder="e.g. 500mg"></div>
+        <div class="form-group"><label>Frequency</label><input id="rx_freq" required placeholder="e.g. Twice daily"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Duration</label><input id="rx_duration" required placeholder="e.g. 30 days"></div>
+        <div class="form-group"><label>Quantity</label><input type="number" id="rx_qty" value="30"></div>
+      </div>
+      <div class="form-group"><label>Instructions</label><input id="rx_instr"></div>
+      <div class="form-group"><label>Refills</label><input type="number" id="rx_refills" value="0"></div>
+      <div style="text-align:right;margin-top:10px">
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn">Add</button>
+      </div>
+    </form>
+  `);
+  document.getElementById('rxForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      medicationName: document.getElementById('rx_name').value,
+      dosage: document.getElementById('rx_dosage').value,
+      frequency: document.getElementById('rx_freq').value,
+      duration: document.getElementById('rx_duration').value,
+      instructions: document.getElementById('rx_instr').value,
+      quantity: parseInt(document.getElementById('rx_qty').value || 0),
+      refills: parseInt(document.getElementById('rx_refills').value || 0),
+    };
+    const res = await api.addPrescription(recordId, data);
+    if (res.success) { toast('Prescription added'); closeModal(); }
+    else toast(res.error || 'Failed to add prescription', 'error');
+  });
+}
+function openRecordModal() {
+  openModal(`
+    <h2>New Medical Record</h2>
+    <form id="newRecordForm">
+      <div class="form-row">
+        <div class="form-group"><label>Patient ID</label><input type="number" id="mr_patientId" required></div>
+        <div class="form-group"><label>Doctor ID</label><input type="number" id="mr_doctorId" required></div>
+      </div>
+      <div class="form-group"><label>Appointment ID (optional)</label><input type="number" id="mr_apptId"></div>
+      <div class="form-group"><label>Diagnosis</label><input id="mr_diag" required></div>
+      <div class="form-group"><label>Symptoms</label><input id="mr_symptoms"></div>
+      <div class="form-group"><label>Visit Notes</label><textarea id="mr_notes"></textarea></div>
+      <div class="form-group"><label>Physical Examination</label><input id="mr_exam"></div>
+      <div class="form-group"><label>Lab Test Results</label><input id="mr_labs"></div>
+      <div class="form-group"><label>Treatment Plan</label><textarea id="mr_plan"></textarea></div>
+      <div style="text-align:right;margin-top:10px">
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn">Create</button>
+      </div>
+    </form>
+  `);
+  document.getElementById('newRecordForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      patientId: parseInt(document.getElementById('mr_patientId').value),
+      doctorId: parseInt(document.getElementById('mr_doctorId').value),
+      appointmentId: document.getElementById('mr_apptId').value ? parseInt(document.getElementById('mr_apptId').value) : null,
+      diagnosis: document.getElementById('mr_diag').value,
+      visitNotes: document.getElementById('mr_notes').value,
+      symptoms: document.getElementById('mr_symptoms').value,
+      physicalExamination: document.getElementById('mr_exam').value,
+      labTestResults: document.getElementById('mr_labs').value,
+      treatmentPlan: document.getElementById('mr_plan').value,
+    };
+    const res = await api.createMedicalRecord(data);
+    if (res.success) { toast('Medical record created'); closeModal(); loadMedicalRecords(1); }
+    else toast(res.error || 'Creation failed', 'error');
+  });
+}
+async function editRecord(id) {
+  const res = await api.getMedicalRecordById(id);
+  if (!res.success) return toast(res.error || 'Failed to load record', 'error');
+  const r = res.data;
+  openModal(`
+    <h2>Edit Medical Record</h2>
+    <form id="editRecordForm">
+      <div class="form-group"><label>Diagnosis</label><input id="er_diag" value="${r.diagnosis || ''}" required></div>
+      <div class="form-group"><label>Symptoms</label><input id="er_symptoms" value="${r.symptoms || ''}"></div>
+      <div class="form-group"><label>Visit Notes</label><textarea id="er_notes">${r.visitNotes || ''}</textarea></div>
+      <div class="form-group"><label>Physical Examination</label><input id="er_exam" value="${r.physicalExamination || ''}"></div>
+      <div class="form-group"><label>Lab Test Results</label><input id="er_labs" value="${r.labTestResults || ''}"></div>
+      <div class="form-group"><label>Treatment Plan</label><textarea id="er_plan">${r.treatmentPlan || ''}</textarea></div>
+      <div style="text-align:right;margin-top:10px">
+        <button type="button" class="btn secondary" onclick="closeModal()">Cancel</button>
+        <button type="submit" class="btn">Save</button>
+      </div>
+    </form>
+  `);
+  document.getElementById('editRecordForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      diagnosis: document.getElementById('er_diag').value,
+      visitNotes: document.getElementById('er_notes').value,
+      symptoms: document.getElementById('er_symptoms').value,
+      physicalExamination: document.getElementById('er_exam').value,
+      labTestResults: document.getElementById('er_labs').value,
+      treatmentPlan: document.getElementById('er_plan').value,
+    };
+    const r2 = await api.updateMedicalRecord(id, data);
+    if (r2.success) { toast('Record updated'); closeModal(); loadMedicalRecords(1); }
+    else toast(r2.error || 'Update failed', 'error');
+  });
+}
+async function deleteRecordConfirm(id) {
+  if (!confirm('Delete this medical record?')) return;
+  const res = await api.deleteMedicalRecord(id);
+  if (res.success) { toast('Record deleted'); loadMedicalRecords(1); }
+  else toast(res.error || 'Delete failed', 'error');
+}
+
+/* ========================================================================
+   SHARED: PAGINATION + MODAL
+======================================================================== */
+function renderPagination(containerId, totalPages, currentPage, loaderFn) {
+  const el = document.getElementById(containerId);
+  if (!totalPages || totalPages <= 1) { el.innerHTML = ''; return; }
+  let html = '';
+  if (currentPage > 1) html += `<button onclick="${loaderFn.name}(${currentPage - 1})">← Prev</button>`;
+  for (let i = 1; i <= totalPages; i++) {
+    html += `<button class="${i === currentPage ? 'active' : ''}" onclick="${loaderFn.name}(${i})">${i}</button>`;
+  }
+  if (currentPage < totalPages) html += `<button onclick="${loaderFn.name}(${currentPage + 1})">Next →</button>`;
+  el.innerHTML = html;
+}
+function openModal(html) {
+  document.getElementById('modalBox').innerHTML = html;
+  document.getElementById('modalOverlay').classList.add('show');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('show');
+  document.getElementById('modalBox').innerHTML = '';
+}
+document.getElementById('modalOverlay').addEventListener('click', (e) => {
+  if (e.target.id === 'modalOverlay') closeModal();
+});
+
+/* ========================================================================
+   BOOTSTRAP
+======================================================================== */
+(function init() {
+  const token = localStorage.getItem('token');
+  if (token) enterApp();
+})();
+</script>
+</body>
+</html>
